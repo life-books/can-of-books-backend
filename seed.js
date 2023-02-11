@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 mongoose.connect(process.env.MONGODB_URL);
-const Dog = require('./models/book');
+const Book = require('./models/book');
 
 async function seed (){
     await Book.create({

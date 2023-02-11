@@ -11,7 +11,7 @@ app.use(cors());
 
 const PORT = process.env.PORT || 3002;
 
-mongoose.connect(process.env.MONGOD_URL);
+mongoose.connect(process.env.MONGODB_URL);
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error'));
@@ -19,9 +19,9 @@ db.once('open', () => console.log('Mongoose is connected'));
 
 app.get('/', (req,res) => res.status(200).send('Default Route Working'));
 
-app.get('/test', (req, resp) => {
+app.get('/test', (req, res) => {
 
-  response.send('test request received')
+  res.send('test request received')
 
 })
 

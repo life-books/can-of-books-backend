@@ -8,3 +8,5 @@ function getBooks(req, res, next) {
         .then(data => res.status(200).send(data))
         .catch(err => console.error(err));
 }
+
+module.exports = getBooks;
