@@ -19,7 +19,7 @@ bookHandler.postBook = function(req, res, next){
 }
 
 bookHandler.deleteBook = function(req, res, next){
-    const id = req.params.id;
+    const id = req.params.bookID;
     Book.findByIdAndDelete(id)
     .then(deletedBook => res.status(200).send(deletedBook))
     .catch(err => next(err))
