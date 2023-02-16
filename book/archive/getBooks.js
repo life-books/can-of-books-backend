@@ -1,6 +1,6 @@
 'use strict'
 
-const Book = require('../models/book');
+const Book = require('../../models/book');
 
 function getBooks(req, res, next) {
     let queryObject = {};
