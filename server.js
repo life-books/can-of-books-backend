@@ -4,12 +4,14 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-
-const getBooks = require('./book/getBooks');
-const postBooks = require('./book/postBooks');
+const { application } = require('express');
+const bookHandler = require('./book/bookHandler');
 
 const app = express();
 app.use(cors());
+
+//required for the body
+app.use(express.json());
 
 const PORT = process.env.PORT || 3002;
 
@@ -26,9 +28,26 @@ app.get('/test', (req, res) => {
   res.send('test request received')
 
 })
+// endpoint - to get all books from the database and send to the frontend
+app.get('/books', bookHandler.getBooks);
 
-app.get('/books', getBooks);
-app.get('/books', postBooks);
+//end point to add books
+app.get('/books', bookHandler.postBook);
+
+app.delete('/books/:bookID', bookHandler.deleteBook);
+
+
+
+
+app.get('*', (request, response) => {
+  response.status(404).send('For you, Not availabe');
+});
+
+
+// ERROR
+app.use((error, request, response, next) => {
+  response.status(500).send(error.message);
+});
 
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
