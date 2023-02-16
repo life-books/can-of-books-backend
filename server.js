@@ -34,7 +34,7 @@ app.get('/test', (req, res) => {
 app.get('/books', bookHandler.getBooks);
 
 //end point to add books
-app.get('/books', bookHandler.postBook);
+app.post('/books', bookHandler.postBook);
 
 app.delete('/books/:bookID', bookHandler.deleteBook);
 
@@ -42,7 +42,7 @@ app.delete('/books/:bookID', bookHandler.deleteBook);
 
 
 app.get('*', (request, response) => {
-  response.status(404).send('For you, Not availabe');
+  response.status(404).send('For you, Not available');
 });
 
 
