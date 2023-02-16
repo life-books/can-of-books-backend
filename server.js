@@ -4,7 +4,9 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+
 const getBooks = require('./book/getBooks');
+const postBooks = require('./book/postBooks');
 
 const app = express();
 app.use(cors());
@@ -26,5 +28,7 @@ app.get('/test', (req, res) => {
 })
 
 app.get('/books', getBooks);
+app.get('/books', postBooks);
+
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
