@@ -12,6 +12,6 @@ const bookSchema = new Schema({
 
 //gives function to communicate with the database
 
-const BookModel = mongoose.model('Book', bookSchema);
+// const BookModel = mongoose.model('Book', bookSchema);
 
 module.exports = mongoose.model('Book', bookSchema);
