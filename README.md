@@ -1,4 +1,4 @@
-# Project Name
+# Project Name- Can of Books
 
 **Author**: Paula Davidson and Jeremy Adamson
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
@@ -21,15 +21,14 @@ Built using Atlas for mongodb, react-bootstrap, and javascript
 
 ## Estimates
 
-
 ## Credit and Collaborations
 
-We want to thank our instructor Roger Reyes, netlify, render.com, and vscode! 
+We want to thank our instructor Roger Reyes, netlify, render.com, and vscode!
 
 Logistical
 
-* What hours will you be available to communicate? 
-Regular Nights and weekends unless we see fit to work longer to get the lab done. 
+* What hours will you be available to communicate?
+Regular Nights and weekends unless we see fit to work longer to get the lab done.
 
 * What platform will you use to communicate (ie. Slack, phone …)?
 Slack

@@ -10,4 +10,8 @@ const bookSchema = new Schema({
     status: Boolean
 })
 
+//gives function to communicate with the database
+
+// const BookModel = mongoose.model('Book', bookSchema);
+
 module.exports = mongoose.model('Book', bookSchema);
