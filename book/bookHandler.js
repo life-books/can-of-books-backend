@@ -17,12 +17,12 @@ bookHandler.getBooks = function(req, res, next){
         .catch(err => console.error(err));
 }
 
-bookHandler.putBook = function(req, res, next){
+bookHandler.putBook = function (req, res, next) {
     const id = req.body.bookID;
     const data = req.body;
-    Book.findByIdAndUpdate(id, data, {new: true, overwrite: true})
-    .then(updatedBook => res.status(200).send(updatedBook))
-    .catch(err => next(err));
+    Book.findByIdAndUpdate(id, data, { new: true, overwrite: true })
+        .then(updatedBook => res.status(200).send(updatedBook))
+        .catch(err => next(err));
 }
 
 bookHandler.deleteBook = function(req, res, next){
