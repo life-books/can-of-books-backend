@@ -4,6 +4,12 @@ const Book = require('../models/book');
 
 const bookHandler ={};
 
+bookHandler.postBook = function(req, res, next){
+    const data = req.body;
+    Book.create(data)
+      .then(createdBook => res.status(200).send(createdBook))
+      .catch(err => next(err))
+}
 bookHandler.getBooks = function(req, res, next){
     let queryObject = {};
     Book.find(queryObject)
@@ -11,11 +17,12 @@ bookHandler.getBooks = function(req, res, next){
         .catch(err => console.error(err));
 }
 
-bookHandler.postBook = function(req, res, next){
+bookHandler.putBook = function (req, res, next) {
+    const id = req.params.bookID;
     const data = req.body;
-    Book.create(data)
-      .then(createdBook => res.status(200).send(createdBook))
-      .catch(err => next(err))
+    Book.findByIdAndUpdate(id, data, { new: true, overwrite: true })
+        .then(updatedBook => res.status(200).send(updatedBook))
+        .catch(err => next(err));
 }
 
 bookHandler.deleteBook = function(req, res, next){

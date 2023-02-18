@@ -30,16 +30,12 @@ app.get('/test', (req, res) => {
   res.send('test request received')
 
 })
-// endpoint - to get all books from the database and send to the frontend
-app.get('/books', bookHandler.getBooks);
 
-//end point to add books
+// CRUD API
 app.post('/books', bookHandler.postBook);
-
+app.get('/books', bookHandler.getBooks);
+app.put('/books/:bookID', bookHandler.putBook);
 app.delete('/books/:bookID', bookHandler.deleteBook);
-
-
-
 
 app.get('*', (request, response) => {
   response.status(404).send('For you, Not available');
