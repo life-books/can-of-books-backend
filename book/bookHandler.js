@@ -18,7 +18,7 @@ bookHandler.getBooks = function(req, res, next){
 }
 
 bookHandler.putBook = function (req, res, next) {
-    const id = req.body.bookID;
+    const id = req.params.bookID;
     const data = req.body;
     Book.findByIdAndUpdate(id, data, { new: true, overwrite: true })
         .then(updatedBook => res.status(200).send(updatedBook))
