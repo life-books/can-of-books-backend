@@ -5,13 +5,14 @@ const Book = require('../models/book');
 const bookHandler ={};
 
 bookHandler.postBook = function(req, res, next){
-    const data = req.body;
+    const data = ({...req.body, email:req.user.email});
     Book.create(data)
       .then(createdBook => res.status(200).send(createdBook))
       .catch(err => next(err))
 }
 bookHandler.getBooks = function(req, res, next){
-    let queryObject = {};
+    let queryObject = {email:req.user.email};
+    
     Book.find(queryObject)
         .then(data => res.status(200).send(data))
         .catch(err => console.error(err));
@@ -20,7 +21,7 @@ bookHandler.getBooks = function(req, res, next){
 bookHandler.putBook = function (req, res, next) {
     const id = req.params.bookID;
     const data = req.body;
-    Book.findByIdAndUpdate(id, data, { new: true, overwrite: true })
+    Book.findByIdAndUpdate(id, data, {...request.body, email: request.user.email},{ new: true, overwrite: true })
         .then(updatedBook => res.status(200).send(updatedBook))
         .catch(err => next(err));
 }
