@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 
 const { application } = require('express');
 const bookHandler = require('./book/bookHandler');
+const verifyUser = require('./auth');
 
 
 const app = express();
@@ -30,6 +31,8 @@ app.get('/test', (req, res) => {
   res.send('test request received')
 
 })
+
+app.use(verifyUser);
 
 // CRUD API
 app.post('/books', bookHandler.postBook);

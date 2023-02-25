@@ -10,6 +10,7 @@ async function seed (){
     await Book.create({
         title: 'The Fellowship of the Ring',
         description: 'A very long roadtrip',
+        email:'forgetmnot27@gmail.com',
         status: true
     })
     .then(response => console.log('Saved Fellowship to Database'))
@@ -18,6 +19,7 @@ async function seed (){
     await Book.create({
         title: 'The Two Towers',
         description: 'I heard you liked battling in the deep',
+        email:'forgetmnot27@gmail.com',
         status: false
     })
     .then(response => console.log('Saved Two Towers to Database'))
@@ -26,6 +28,7 @@ async function seed (){
     await Book.create({
         title: 'The Return of the King',
         description: 'Gollum does the worst wedding proposal ever',
+        email:'forgetmnot27@gmail.com',
         status: true
     })
     .then(response => console.log('Saved Return of the King to Database'))

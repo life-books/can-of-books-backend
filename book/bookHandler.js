@@ -12,6 +12,7 @@ bookHandler.postBook = function(req, res, next){
 }
 bookHandler.getBooks = function(req, res, next){
     let queryObject = {};
+    let results = Book.find({ email: request.user.email});
     Book.find(queryObject)
         .then(data => res.status(200).send(data))
         .catch(err => console.error(err));
@@ -20,7 +21,7 @@ bookHandler.getBooks = function(req, res, next){
 bookHandler.putBook = function (req, res, next) {
     const id = req.params.bookID;
     const data = req.body;
-    Book.findByIdAndUpdate(id, data, { new: true, overwrite: true })
+    Book.findByIdAndUpdate(id, data, {...request.body, email: request.user.email},{ new: true, overwrite: true })
         .then(updatedBook => res.status(200).send(updatedBook))
         .catch(err => next(err));
 }
