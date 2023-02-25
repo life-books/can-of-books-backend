@@ -11,7 +11,7 @@ bookHandler.postBook = function(req, res, next){
       .catch(err => next(err))
 }
 bookHandler.getBooks = function(req, res, next){
-    let queryObject = {email:req.user.email};
+    let queryObject = {};
     
     Book.find(queryObject)
         .then(data => res.status(200).send(data))
