@@ -7,13 +7,13 @@ const mongoose = require('mongoose');
 
 const { application } = require('express');
 const bookHandler = require('./book/bookHandler');
+const verifyUser = require('./auth');
 
 
 const app = express();
 app.use(cors());
-
-//required for the body
 app.use(express.json());
+app.use(verifyUser);
 
 const PORT = process.env.PORT || 3002;
 
@@ -30,6 +30,8 @@ app.get('/test', (req, res) => {
   res.send('test request received')
 
 })
+
+app.use(verifyUser);
 
 // CRUD API
 app.post('/books', bookHandler.postBook);
