@@ -5,14 +5,14 @@ const Book = require('../models/book');
 const bookHandler ={};
 
 bookHandler.postBook = function(req, res, next){
-    const data = req.body;
+    const data = ({...req.body, email:req.user.email});
     Book.create(data)
       .then(createdBook => res.status(200).send(createdBook))
       .catch(err => next(err))
 }
 bookHandler.getBooks = function(req, res, next){
-    let queryObject = {};
-    let results = Book.find({ email: request.user.email});
+    let queryObject = {email:req.user.email};
+    
     Book.find(queryObject)
         .then(data => res.status(200).send(data))
         .catch(err => console.error(err));

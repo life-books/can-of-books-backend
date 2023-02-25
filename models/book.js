@@ -7,7 +7,7 @@ const {Schema} = mongoose;
 const bookSchema = new Schema({
     title: String,
     description: String,
-    email: String, required: true,
+    email: String, 
     status: Boolean
 })
 
