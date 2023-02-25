@@ -12,9 +12,8 @@ const verifyUser = require('./auth');
 
 const app = express();
 app.use(cors());
-
-//required for the body
 app.use(express.json());
+app.use(verifyUser);
 
 const PORT = process.env.PORT || 3002;
 
