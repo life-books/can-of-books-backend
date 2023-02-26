@@ -5,6 +5,7 @@ const Book = require('../models/book');
 const bookHandler ={};
 
 bookHandler.postBook = function(req, res, next){
+    console.log(req.body);
     const data = ({...req.body, email:req.user.email});
     Book.create(data)
       .then(createdBook => res.status(200).send(createdBook))
@@ -21,7 +22,8 @@ bookHandler.getBooks = function(req, res, next){
 bookHandler.putBook = function (req, res, next) {
     const id = req.params.bookID;
     const data = req.body;
-    Book.findByIdAndUpdate(id, data, {...request.body, email: request.user.email},{ new: true, overwrite: true })
+    console.log(data, id);
+    Book.findByIdAndUpdate(id, {...req.body, email: req.user.email},{ new: true, overwrite: true })
         .then(updatedBook => res.status(200).send(updatedBook))
         .catch(err => next(err));
 }
